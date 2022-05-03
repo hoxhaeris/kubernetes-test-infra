@@ -17,6 +17,7 @@ limitations under the License.
 package jira
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -35,6 +36,8 @@ import (
 
 type Client interface {
 	GetIssue(id string) (*jira.Issue, error)
+	Search(jql string, options *jira.SearchOptions) ([]jira.Issue, *jira.Response, error)
+	SearchWithContext(ctx context.Context, jql string, options *jira.SearchOptions) ([]jira.Issue, *jira.Response, error)
 	GetRemoteLinks(id string) ([]jira.RemoteLink, error)
 	AddRemoteLink(id string, link *jira.RemoteLink) error
 	UpdateRemoteLink(id string, link *jira.RemoteLink) error
@@ -189,6 +192,22 @@ func (jc *client) GetIssue(id string) (*jira.Issue, error) {
 	}
 
 	return issue, nil
+}
+
+// Search wraps SearchWithContext using the background context.
+func (jc *client) Search(jql string, options *jira.SearchOptions) ([]jira.Issue, *jira.Response, error) {
+	return jc.SearchWithContext(context.Background(), jql, options)
+}
+
+func (jc *client) SearchWithContext(ctx context.Context, jql string, options *jira.SearchOptions) ([]jira.Issue, *jira.Response, error) {
+	issue, response, err := jc.upstream.Issue.SearchWithContext(ctx, jql, options)
+	if err != nil {
+		if response != nil && response.StatusCode == http.StatusNotFound {
+			return nil, response, NotFoundError{err}
+		}
+		return nil, response, JiraError(response, err)
+	}
+	return issue, response, nil
 }
 
 func (jc *client) ListProjects() (*jira.ProjectList, error) {
