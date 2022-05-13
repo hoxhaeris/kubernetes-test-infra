@@ -53,7 +53,6 @@ const (
 type Client interface {
 	GetIssue(id string) (*jira.Issue, error)
 	// SearchWithContext will search for tickets according to the jql
-	//
 	// Jira API docs: https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis/jira-rest-api-tutorials/jira-rest-api-example-query-issues
 	SearchWithContext(ctx context.Context, jql string, options *jira.SearchOptions) ([]jira.Issue, *jira.Response, error)
 	UpdateIssue(*jira.Issue) (*jira.Issue, error)
