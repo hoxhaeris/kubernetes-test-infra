@@ -789,12 +789,12 @@ func (l *retryableHTTPLogrusWrapper) Warn(msg string, context ...interface{}) {
 }
 
 func (jc *client) SearchWithContext(ctx context.Context, jql string, options *jira.SearchOptions) ([]jira.Issue, *jira.Response, error) {
-	issue, response, err := jc.upstream.Issue.SearchWithContext(ctx, jql, options)
+	issues, response, err := jc.upstream.Issue.SearchWithContext(ctx, jql, options)
 	if err != nil {
 		if response != nil && response.StatusCode == http.StatusNotFound {
 			return nil, response, NotFoundError{err}
 		}
 		return nil, response, HandleJiraError(response, err)
 	}
-	return issue, response, nil
+	return issues, response, nil
 }
