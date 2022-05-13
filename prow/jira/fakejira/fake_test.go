@@ -24,16 +24,12 @@ func TestFakeClient_SearchWithContext(t *testing.T) {
 		},
 	}
 	searchOptions := &jira.SearchOptions{MaxResults: 50, StartAt: 0}
-	request := Request{
-		query:   "project=test",
-		options: searchOptions,
-	}
-	response := Response{
+
+	s[Request{query: "project=test", options: searchOptions}] = Response{
 		values:   issueList,
 		response: &jira.Response{StartAt: 0, MaxResults: 3, Total: 3},
 		error:    nil,
 	}
-	s[request] = response
 	fakeClient := &FakeClient{Responses: s}
 	r, v, err := fakeClient.SearchWithContext(context.Background(), "project=test", searchOptions)
 	if err != nil {
