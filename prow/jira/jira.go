@@ -226,9 +226,6 @@ func (jc *client) JiraClient() *jira.Client {
 func (jc *client) GetIssue(id string) (*jira.Issue, error) {
 	issue, response, err := jc.upstream.Issue.Get(id, &jira.GetQueryOptions{})
 	if err != nil {
-		if response != nil && response.StatusCode == http.StatusNotFound {
-			return nil, NotFoundError{err}
-		}
 		return nil, HandleJiraError(response, err)
 	}
 
@@ -724,6 +721,9 @@ func JiraErrorBody(err error) string {
 // bodies if it's detected that the original error holds no
 // useful context in the first place
 func HandleJiraError(response *jira.Response, err error) error {
+	if response != nil && response.StatusCode == http.StatusNotFound {
+		return NotFoundError{err}
+	}
 	if err != nil && strings.Contains(err.Error(), "Please analyze the request body for more details.") {
 		if response != nil && response.Response != nil {
 			body, readError := ioutil.ReadAll(response.Body)
@@ -790,9 +790,6 @@ func (l *retryableHTTPLogrusWrapper) Warn(msg string, context ...interface{}) {
 func (jc *client) SearchWithContext(ctx context.Context, jql string, options *jira.SearchOptions) ([]jira.Issue, *jira.Response, error) {
 	issues, response, err := jc.upstream.Issue.SearchWithContext(ctx, jql, options)
 	if err != nil {
-		if response != nil && response.StatusCode == http.StatusNotFound {
-			return nil, response, NotFoundError{err}
-		}
 		return nil, response, HandleJiraError(response, err)
 	}
 	return issues, response, nil
