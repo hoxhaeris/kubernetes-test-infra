@@ -1161,3 +1161,368 @@ func (f *FakeClient) RequestReview(org, repo string, number int, logins []string
 	f.ReviewersRequested = logins
 	return nil
 }
+
+func (f *FakeClient) GetPullRequests(org, repo string) ([]github.PullRequest, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) GetPullRequestPatch(org, repo string, number int) ([]byte, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ClosePR(org, repo string, number int) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ReopenPR(org, repo string, number int) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UnrequestReview(org, repo string, number int, logins []string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) Merge(org, repo string, pr int, details github.MergeDetails) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) IsMergeable(org, repo string, number int, SHA string) (bool, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UpdatePullRequestBranch(org, repo string, number int, expectedHeadSha *string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) GetBranches(org, repo string, onlyProtected bool) ([]github.Branch, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) GetBranchProtection(org, repo, branch string) (*github.BranchProtection, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) RemoveBranchProtection(org, repo, branch string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UpdateBranchProtection(org, repo, branch string, config github.BranchProtectionRequest) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UpdateRepoLabel(org, repo, label, newName, description, color string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) DeleteRepoLabel(org, repo, label string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) AddLabelWithContext(ctx context.Context, org, repo string, number int, label string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) AddLabelsWithContext(ctx context.Context, org, repo string, number int, labels ...string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) RemoveLabelWithContext(ctx context.Context, org, repo string, number int, label string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) CreateFork(owner, repo string) (string, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) EnsureFork(forkingUser, org, repo string) (string, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListRepoTeams(org, repo string) ([]github.Team, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) CreateRepo(owner string, isUser bool, repo github.RepoCreateRequest) (*github.FullRepo, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UpdateRepo(owner, name string, repo github.RepoUpdateRequest) (*github.FullRepo, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListCheckRuns(org, repo, ref string) (*github.CheckRunList, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListFileCommits(org, repo, path string) ([]github.RepositoryCommit, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) CreateCheckRun(org, repo string, checkRun github.CheckRun) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UnassignIssue(org, repo string, number int, logins []string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ReopenIssue(org, repo string, number int) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) DeleteStaleCommentsWithContext(ctx context.Context, org, repo string, number int, comments []github.IssueComment, isStale func(github.IssueComment) bool) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) GetOrg(name string) (*github.Organization, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) EditOrg(name string, config github.Organization) (*github.Organization, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListOrgInvitations(org string) ([]github.OrgInvitation, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListOrgMembers(org, role string) ([]github.TeamMember, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) HasPermission(org, repo, user string, roles ...string) (bool, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) GetUserPermission(org, repo, user string) (string, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UpdateOrgMembership(org, user string, admin bool) (*github.OrgMembership, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) RemoveOrgMembership(org, user string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) CreateTeam(org string, team github.Team) (*github.Team, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) EditTeam(org string, t github.Team) (*github.Team, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) DeleteTeam(org string, id int) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) DeleteTeamBySlug(org, teamSlug string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UpdateTeamMembership(org string, id int, user string, maintainer bool) (*github.TeamMembership, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UpdateTeamMembershipBySlug(org, teamSlug, user string, maintainer bool) (*github.TeamMembership, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) RemoveTeamMembership(org string, id int, user string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) RemoveTeamMembershipBySlug(org, teamSlug, user string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListTeamRepos(org string, id int) ([]github.Repo, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListTeamReposBySlug(org, teamSlug string) ([]github.Repo, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UpdateTeamRepo(id int, org, repo string, permission github.TeamPermission) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UpdateTeamRepoBySlug(org, teamSlug, repo string, permission github.TeamPermission) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) RemoveTeamRepo(id int, org, repo string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) RemoveTeamRepoBySlug(org, teamSlug, repo string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListTeamInvitations(org string, id int) ([]github.OrgInvitation, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListTeamInvitationsBySlug(org, teamSlug string) ([]github.OrgInvitation, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) Email() (string, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListOrgHooks(org string) ([]github.Hook, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListRepoHooks(org, repo string) ([]github.Hook, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) EditRepoHook(org, repo string, id int, req github.HookRequest) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) EditOrgHook(org string, id int, req github.HookRequest) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) CreateOrgHook(org string, req github.HookRequest) (int, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) CreateRepoHook(org, repo string, req github.HookRequest) (int, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) DeleteOrgHook(org string, id int, req github.HookRequest) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) DeleteRepoHook(org, repo string, id int, req github.HookRequest) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListAppInstallations() ([]github.AppInstallation, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) IsAppInstalled(org, repo string) (bool, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) UsesAppAuth() bool {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ListAppInstallationsForOrg(org string) ([]github.AppInstallation, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) GetApp() (*github.App, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) GetAppWithContext(ctx context.Context) (*github.App, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) Throttle(hourlyTokens, burst int, org ...string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) QueryWithGitHubAppsSupport(ctx context.Context, q interface{}, vars map[string]interface{}, org string) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) SetMax404Retries(i int) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ForPlugin(plugin string) github.Client {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) ForSubcomponent(subcomponent string) github.Client {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (f *FakeClient) Used() bool {
+	//TODO implement me
+	panic("implement me")
+}
